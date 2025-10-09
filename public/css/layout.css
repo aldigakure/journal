@@ -1,0 +1,65 @@
+.sidebar {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.sidebar a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    transition: all 0.3s;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+.card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+}
+/* Mobile overlay sidebar */
+.mobile-sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1040;
+}
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80vw;
+    max-width: 320px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    z-index: 1045;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+/* mobile sidebar link styles: force white color and remove default blue */
+.mobile-sidebar a {
+    color: rgba(255,255,255,0.95);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+}
+.mobile-sidebar a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.mobile-sidebar .bi {
+    color: rgba(255,255,255,0.95);
+    margin-right: .5rem;
+}
+@media(min-width: 768px){
+    .mobile-sidebar-backdrop, .mobile-sidebar { display: none !important; }
+}
