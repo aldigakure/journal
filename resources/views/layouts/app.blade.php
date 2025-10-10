@@ -6,14 +6,14 @@
     <title>@yield('title', 'Jurnal Guru')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}?v={{ filemtime(public_path('css/layout.css')) }}">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body class="bg-light">
     <div class="d-md-none bg-white shadow-sm border-bottom">
         <div class="container-fluid d-flex align-items-center justify-content-between p-2">
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSidebar" aria-expanded="false" aria-controls="mobileSidebar">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                     <i class="bi bi-list"></i>
                 </button>
                 <span class="fw-bold">Jurnal Guru Stemka</span>
@@ -25,16 +25,16 @@
             </div>
         </div>
     </div>
-    <div class="collapse" id="mobileSidebar">
-        <div class="mobile-sidebar-backdrop"></div>
-        <div class="mobile-sidebar">
-            <div class="p-3 d-flex justify-content-between align-items-center border-bottom">
-                <strong class="m-0">Jurnal Guru Stemka</strong>
-                <button class="btn btn-sm btn-outline-light" data-bs-toggle="collapse" data-bs-target="#mobileSidebar">
-                    <i class="bi bi-x"></i>
-                </button>
-            </div>
-            <nav class="p-3">
+
+    <div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <div class="offcanvas-header p-3 d-flex justify-content-between align-items-center border-bottom">
+            <strong id="mobileSidebarLabel" class="m-0">Jurnal Guru Stemka</strong>
+            <button class="btn btn-sm btn-outline-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body p-3">
+            <nav>
                 <a href="{{ route('journals.index') }}" class="d-block mb-2">
                     <i class="bi bi-book"></i> Jurnal Mengajar
                 </a>
