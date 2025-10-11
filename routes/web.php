@@ -17,6 +17,11 @@ Route::resource('journals', JournalController::class);
 // Teachers Routes
 Route::resource('teachers', TeacherController::class);
 
+// Teacher Absence (izin sakit) Routes
+use App\Http\Controllers\TeacherAbsenceController;
+Route::get('teacher-absences/create', [TeacherAbsenceController::class, 'create'])->name('teacher-absences.create');
+Route::post('teacher-absences', [TeacherAbsenceController::class, 'store'])->name('teacher-absences.store');
+
 // Subjects Routes
 Route::resource('subjects', SubjectController::class);
 
