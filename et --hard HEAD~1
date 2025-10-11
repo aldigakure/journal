@@ -1,0 +1,24 @@
+[33mcommit 57f0566645f4c19ca130dc2f0179952f2a6adc08[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: df0bea8 65e647d
+Author: Aldiansyah <gakurealdi@gmail.com>
+Date:   Fri Oct 10 09:45:21 2025 +0700
+
+    Merge branch 'master' of https://github.com/aldigakure/journal
+
+[33mcommit df0bea87888a2fa2a587f75ae455fd36c93a011a[m
+Author: Aldiansyah <gakurealdi@gmail.com>
+Date:   Fri Oct 10 09:45:09 2025 +0700
+
+    new update
+
+[33mcommit 65e647d06e8de15ce894e2156d42418d3936c20c[m
+Author: Aldiansyah <gakurealdi@gmail.com>
+Date:   Fri Oct 10 09:41:05 2025 +0700
+
+    fix burger bar and add show view
+
+[33mcommit c60e668cf883a3c8a5a9d75320f75fef05a76b02[m
+Author: Aldiansyah <gakurealdi@gmail.com>
+Date:   Thu Oct 9 09:50:56 2025 +0700
+
+    make a journal
