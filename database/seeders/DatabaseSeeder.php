@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            \Database\Seeders\SubjectSeeder::class,
-            \Database\Seeders\ClassroomSeeder::class,
+            SubjectSeeder::class,
+            ClassroomSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

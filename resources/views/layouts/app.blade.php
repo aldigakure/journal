@@ -1,101 +1,80 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Jurnal Guru')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/layout.css') }}?v={{ filemtime(public_path('css/layout.css')) }}">
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head>
-<body class="bg-light">
-    <div class="d-md-none bg-white shadow-sm border-bottom">
-        <div class="container-fluid d-flex align-items-center justify-content-between p-2">
-            <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                    <i class="bi bi-list"></i>
-                </button>
-                <span class="fw-bold">Jurnal Guru Stemka</span>
-            </div>
-            <div>
-                <button class="btn btn-sm btn-outline-secondary" onclick="location.reload();" title="Refresh">
-                    <i class="bi bi-arrow-clockwise"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-        <div class="offcanvas-header p-3 d-flex justify-content-between align-items-center border-bottom">
-            <strong id="mobileSidebarLabel" class="m-0">Jurnal Guru Stemka</strong>
-            <button class="btn btn-sm btn-outline-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="bi bi-x"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body p-3">
-            <nav>
-                <a href="{{ route('journals.index') }}" class="d-block mb-2">
-                    <i class="bi bi-book"></i> Jurnal Mengajar
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
                 </a>
-                <a href="{{ route('teachers.index') }}" class="d-block mb-2">
-                    <i class="bi bi-person-badge"></i> Data Guru
-                </a>
-                <a href="{{ route('subjects.index') }}" class="d-block mb-2">
-                    <i class="bi bi-book-half"></i> Mata Pelajaran
-                </a>
-                <a href="{{ route('classes.index') }}" class="d-block mb-2">
-                    <i class="bi bi-door-open"></i> Data Kelas
-                </a>
-            </nav>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar (desktop only) -->
-            <div class="d-none d-md-block col-md-2 sidebar p-0">
-                <div class="p-4">
-                    <h4 class="text-white mb-4"><i class="bi bi-journal-text"></i> Jurnal Guru Stemka</h4>
-                    <nav class="d-block">
-                        <a href="{{ route('journals.index') }}" class="{{ request()->routeIs('journals.*') ? 'active' : '' }}">
-                            <i class="bi bi-book"></i> Jurnal Mengajar
-                        </a>
-                        <a href="{{ route('teachers.index') }}" class="{{ request()->routeIs('teachers.*') ? 'active' : '' }}">
-                            <i class="bi bi-person-badge"></i> Data Guru
-                        </a>
-                        <a href="{{ route('subjects.index') }}" class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}">
-                            <i class="bi bi-book-half"></i> Mata Pelajaran
-                        </a>
-                        <a href="{{ route('classes.index') }}" class="{{ request()->routeIs('classes.*') ? 'active' : '' }}">
-                            <i class="bi bi-door-open"></i> Data Kelas
-                        </a>
-                    </nav>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
+        </nav>
 
-            <!-- Main Content -->
-            <div class="col-12 col-md-10 p-4">
-                <!-- main alerts -->
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="bi bi-check-circle"></i> {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
-
-                @if(session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="bi bi-exclamation-circle"></i> {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
-
-                @yield('content')
-            </div>
-        </div>
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    @stack('scripts')
 </body>
 </html>

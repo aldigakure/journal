@@ -8,7 +8,7 @@ use App\Http\Controllers\ClassRoomController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('journals.index');
+   return view('welcome');
 });
 
 // Journals Routes
@@ -27,3 +27,18 @@ Route::resource('subjects', SubjectController::class);
 
 // Classes Routes
 Route::resource('classes', ClassroomController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('admin/dashboard', function () {
+    return "dashboard admin";
+})->middleware(['auth', 'role:admin']);
+
+Route::get('teacher/dashboard', function () {
+    return " dashboard teacher";
+})->middleware(['auth', 'role:teacher']);
+
+Route::get('waiting-confirmation', function () {
+    return "waiting confirmation";
+})->middleware(['auth']);
