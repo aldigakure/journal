@@ -31,13 +31,18 @@
                         <td>{{ $teacher->email }}</td>
                         <td>{{ $teacher->phone }}</td>
                         <td>
-                            <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus guru ini?')">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            <div class="d-flex gap-1">
+                                <a href="{{ route('teacher-absences.create', ['teacher_id' => $teacher->id]) }}" class="btn btn-info btn-sm" title="Izin Sakit">
+                                    <i class="bi bi-file-medical"></i>
+                                </a>
+                                <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus guru ini?')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @empty
