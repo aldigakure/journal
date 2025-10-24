@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RoleEnum;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (auth()->user()->hasRole(RoleEnum::ADMIN->value)) {
+            return to_route('admin.dashboard');
+        }else if (auth()->user()->hasRole(RoleEnum::TEACHER->value)){
+            return to_route('teacher.dashboard');
+        } else {
+            return to_route('waiting-confirmation');
+        }
+       
     }
 }
