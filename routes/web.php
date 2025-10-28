@@ -40,7 +40,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('teacher/dashboard', [DashboardController::class, 'index'])->name('teacher.dashboard');
 
 Route::get('waiting-confirmation', function () {
-    return "waiting confirmation";
+    return view("authenticated.waiting-confirmation");
 })->middleware(['auth'])->name('waiting-confirmation');
 
 Route::get('/home',[HomeController::class,'index'])->name('home');
