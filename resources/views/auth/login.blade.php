@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-   
-    <div class="auth-header">
-        <a href="#"><img src="../assets/images/logo-dark.svg" alt="img"></a>
-    </div>
     <div class="card my-5">
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -51,17 +47,6 @@
         </form>
     </div>
     <div class="auth-footer row">
-        <!-- <div class=""> -->
-        <div class="col my-1">
-            <p class="m-0">Copyright © <a href="#">Codedthemes</a></p>
-        </div>
-        <div class="col-auto my-1">
-            <ul class="list-inline footer-link mb-0">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                <li class="list-inline-item"><a href="#">Contact us</a></li>
-            </ul>
-        </div>
-        <!-- </div> -->
+
     </div>
 @endsection

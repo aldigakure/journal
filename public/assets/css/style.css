@@ -22131,9 +22131,10 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.form-
   padding: 24px;
   background-repeat: no-repeat;
   background-size: auto 75%;
-  background-position: left center;
+  background-position: -10pc center;
   position: relative;
   justify-content: space-between;
+  
 }
 .auth-main .auth-wrapper.v3 .auth-form > * {
   position: relative;

@@ -7,6 +7,7 @@ use App\Http\Controllers\JournalController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassRoomController;
+use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Teacher\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,5 @@ Route::get('waiting-confirmation', function () {
 })->middleware(['auth'])->name('waiting-confirmation');
 
 Route::get('/home',[HomeController::class,'index'])->name('home');
+
+Route::get('confirmations', [ConfirmationController::class, 'index'])->name('teacher-confirmations');

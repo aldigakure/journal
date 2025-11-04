@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Login | Mantis Bootstrap 5 Admin Template</title>
+  <title>Jurnal Guru Stemka</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -13,7 +13,7 @@
   <meta name="author" content="CodedThemes">
 
   <!-- [Favicon] icon -->
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Google Font] Family -->
+  <link rel="icon" href="{{ asset('assets/images/antrek.png') }}" type="image/x-icon"> <!-- [Google Font] Family -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
 <!-- [Tabler Icons] https://tablericons.com -->
 <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
@@ -43,6 +43,10 @@
   <div class="auth-main">
     <div class="auth-wrapper v3">
       <div class="auth-form">
+        <div class="auth-header">
+        <a href="#"><img width="200px" src="{{ asset('assets/images/antartika1.png') }}" alt="img"></a>
+    </div>
+
     @yield('content')
       </div>
     </div>
