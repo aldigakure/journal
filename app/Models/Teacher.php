@@ -21,4 +21,8 @@ class Teacher extends Model
     {
         return $this->hasMany(Journal::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

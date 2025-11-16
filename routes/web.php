@@ -47,3 +47,5 @@ Route::get('waiting-confirmation', function () {
 Route::get('/home',[HomeController::class,'index'])->name('home');
 
 Route::get('confirmations', [ConfirmationController::class, 'index'])->name('teacher-confirmations');
+
+Route::post('accept/{id}', [ConfirmationController::class,'accept'])->name('accept-teacher');
